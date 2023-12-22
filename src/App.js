@@ -7,10 +7,13 @@ import Retro from './pages/Retro';
 import Contacto from './pages/Contacto';
 import Layout from './pages/Layout';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { CartProvider } from './context/CartContext';
 
 function App(){
     return (
-        <BrowserRouter>
+        <div>
+            <BrowserRouter>
+            <CartProvider>
             <Routes>
             <Route path='/' element={<Layout/>}> 
                 <Route index element={<Home/>}/>
@@ -19,10 +22,14 @@ function App(){
                 <Route path='/Actuales' element={<Actuales/>}/>
                 <Route path='/Retro' element={<Retro/>}/>
                 <Route path='/Contacto' element={<Contacto/>}/>
+                <Route path='/cart' element={<Cart/>}/>
+                <Route path='/checkout' element={<Checkout/>}/>
             </Route>
                 <Route path='*' element={<h1>404</h1>}/>
             </Routes>
+            </CartProvider>
         </BrowserRouter>
+        </div>
     )
 }
 
